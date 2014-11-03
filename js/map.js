@@ -15,10 +15,36 @@ var mapOptions = {
 var map = new google.maps.Map(document.getElementById('map_canvas'),
     mapOptions);
 
+var smilesMarker = new google.maps.Marker({
+    position: smilesLatLng,
+    map: map,
+    title: 'Happy Birthday and click to see more!'
+});
+
+smilesMarker.setAnimation(google.maps.Animation.BOUNCE);
+
+var feiqiuMarker = new google.maps.Marker({
+    position: feiqiuLatLng,
+    map: map,
+    title: 'Lovely fleshy Feiqiu..!'
+});
+
+feiqiuMarker.setAnimation(google.maps.Animation.BOUNCE);
+
 function clickHere() {
 //    alert("Hello kitty..");
     if (map === null)
         return;
+
+    var line = new google.maps.Polyline({
+        path: [smilesLatLng, feiqiuLatLng],
+        strokeColor: "#BD1103",
+        strokeOpacity: 1.0,
+        strokeWeight: 3,
+        map: map
+    });
+
+    getLocation();
 
     map.setCenter(feiqiuLatLng);
     window.setTimeout(sayHiAgain, 1700);
@@ -39,25 +65,21 @@ function initialize() {
 //        mapOptions);
 //    Map = map;
 
-    var smilesMarker = new google.maps.Marker({
-        position: smilesLatLng,
-        map: map,
-        title: 'Happy Birthday and click to see more!'
-    });
-
-    var feiqiuMarker = new google.maps.Marker({
-        position: feiqiuLatLng,
-        map: map,
-        title: 'Lovely fleshy Feiqiu..!'
-    });
-
-    var line = new google.maps.Polyline({
-        path: [smilesLatLng, feiqiuLatLng],
-        strokeColor: "#BD1103",
-        strokeOpacity: 1.0,
-        strokeWeight: 3,
-        map: map
-    });
+//    var smilesMarker = new google.maps.Marker({
+//        position: smilesLatLng,
+//        map: map,
+//        title: 'Happy Birthday and click to see more!'
+//    });
+//
+//    smilesMarker.setAnimation(google.maps.Animation.BOUNCE);
+//
+//    var feiqiuMarker = new google.maps.Marker({
+//        position: feiqiuLatLng,
+//        map: map,
+//        title: 'Lovely fleshy Feiqiu..!'
+//    });
+//
+//    feiqiuMarker.setAnimation(google.maps.Animation.BOUNCE);
 
 //    google.maps.event.addListener(map, 'click', function(event) {
 //        placeMarker(event.latLng);
@@ -107,7 +129,7 @@ function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else {
-        alert("Geolocation is not supported by this browser.");
+        alert("Geolocation is not supported by this browser. But it doesn\'t matter~");
     }
 }
 function showPosition(position) {
