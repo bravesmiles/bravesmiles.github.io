@@ -1,4 +1,4 @@
 bravesmiles.github.io
 =====================
 
-A blog to maintain infos.
+For someone's birthday, wish you a happy life~
