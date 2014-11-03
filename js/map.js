@@ -2,44 +2,45 @@
  * Created by yaojliu on 11/2/14.
  */
 
-var map;
+//var Map;
+var smilesLatLng = new google.maps.LatLng(37.4042343, -121.9325099);
+var feiqiuLatLng = new google.maps.LatLng(30.270286, 120.163651);
 
-var contentString = '<div id="content">' +
-    '<div id="siteNotice">' +
-    '</div>' +
-    '<h1 id="firstHeading" class="firstHeading">Happy birthday..</h1>' +
-    '<div id="bodyContent">' +
-    '<p><b>To Feiqiu</b>,' +
-    'it\'s such a far distance so that I can not say Happy Birthday to you on site, ' +
-    'and I think it\'s workday right? '+
-    'But you do own me one birthday meal, and I\'ll keep it in my mind and get it back later.. '+
-    'Anyway, wish you have a nice day and enjoy the life with loved ones and the one ' +
-    'rock caves and ancient paintings. Uluru is listed as a World ' +
-    'From ME in.</p>' +
-    '<p>Attribution: Uluru, <a href="http://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
-    'http://en.wikipedia.org/w/index.php?title=Uluru</a> ' +
-    '(last visited June 22, 2009).</p>' +
-    '</div>' +
-    '</div>';
+var mapOptions = {
+    zoom: 5,
+    center: smilesLatLng,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+}
+
+var map = new google.maps.Map(document.getElementById('map_canvas'),
+    mapOptions);
+
+function clickHere() {
+//    alert("Hello kitty..");
+    if (Map === null)
+        return;
+    map.setCenter(feiqiuLatLng);
+}
 
 function initialize() {
-    var smilesLatLng = new google.maps.LatLng(37.4042343, -121.9325099);
-    var feiqiuLatLng = new google.maps.LatLng(30.270286, 120.163651);
+//    var smilesLatLng = new google.maps.LatLng(37.4042343, -121.9325099);
+//    var feiqiuLatLng = new google.maps.LatLng(30.270286, 120.163651);
 
-    var mapOptions = {
-        zoom: 4,
-        center: smilesLatLng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+//    var mapOptions = {
+//        zoom: 4,
+//        center: smilesLatLng,
+//        mapTypeId: google.maps.MapTypeId.ROADMAP
+//
+//    }
 
-    }
-
-    var map = new google.maps.Map(document.getElementById('map_canvas'),
-        mapOptions);
+//    var map = new google.maps.Map(document.getElementById('map_canvas'),
+//        mapOptions);
+//    Map = map;
 
     var smilesMarker = new google.maps.Marker({
         position: smilesLatLng,
         map: map,
-        title: 'Happy Birthday from ME!'
+        title: 'Happy Birthday and click to see more!'
     });
 
     var feiqiuMarker = new google.maps.Marker({
@@ -64,15 +65,20 @@ function initialize() {
         content: wordsForFeiqiu
     });
 
+    var infowindow2 = new google.maps.InfoWindow({
+        content: galleryForFeiqiu
+    });
+
     google.maps.event.addListener(smilesMarker, 'click', function () {
-        map.setZoom(8);
+        map.setZoom(9);
         map.setCenter(smilesMarker.getPosition());
         infowindow.open(map, smilesMarker);
     });
 
     google.maps.event.addListener(feiqiuMarker, 'click', function () {
-        map.setZoom(8);
+        map.setZoom(9);
         map.setCenter(feiqiuMarker.getPosition());
+        infowindow2.open(map, feiqiuMarker);
     });
 
 
