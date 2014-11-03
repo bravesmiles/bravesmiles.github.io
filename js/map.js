@@ -44,7 +44,7 @@ function clickHere() {
         map: map
     });
 
-    getLocation();
+//    getLocation();
 
     map.setCenter(feiqiuLatLng);
     window.setTimeout(sayHiAgain, 1700);
