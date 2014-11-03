@@ -17,9 +17,11 @@ var map = new google.maps.Map(document.getElementById('map_canvas'),
 
 function clickHere() {
 //    alert("Hello kitty..");
-    if (Map === null)
+    if (map === null)
         return;
+
     map.setCenter(feiqiuLatLng);
+    window.setTimeout(sayHiAgain, 1700);
 }
 
 function initialize() {
@@ -93,6 +95,13 @@ function initialize() {
 //    }
 }
 
+function sayHi(){
+    alert("Sorry to say happy birthday late, but it's the very right time to me for you, pu ~with timezone~ Please click the ret dot on the map~")
+}
+
+function sayHiAgain(){
+    alert("So hope you enjoy it~Please click the ret dot on the map again~")
+}
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -106,6 +115,8 @@ function showPosition(position) {
     var lng = position.coords.longitude;
     console.log('lat: ' + lat + ' lng: ' + lng);
 //    map.setCenter(new google.maps.LatLng(lat, lng));
+    feiqiuLatLng = new google.maps.LatLng(lat, lng);
 }
 google.maps.event.addDomListener(window, 'load', initialize);
-getLocation();
+//getLocation();
+window.setTimeout(sayHi, 1700);
