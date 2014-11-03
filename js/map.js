@@ -146,4 +146,4 @@ function showPosition(position) {
 google.maps.event.addDomListener(window, 'load', initialize);
 //getLocation();
 window.setTimeout(sayHi, 1700);
-console.log("彩蛋：不要太吐槽~累死了都~＝＝乖～背景音乐蛮舒服～");
+console.log("彩蛋：不要太吐槽~累死了都~＝＝乖～背景音乐蛮舒服…但愿网速给力…");
